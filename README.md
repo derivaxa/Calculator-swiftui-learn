@@ -8,3 +8,4 @@ Project Details:
 * No Core Data
 * Landscape & Portrait
 * iPad (last 2 gen per device) + iPad Pro + iPhones (6th Gen+)
+* Architecture: MVVM (ModelView-View-Model also known as Presentation Model)

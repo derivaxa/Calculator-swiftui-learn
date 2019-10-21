@@ -17,5 +17,8 @@ struct CalculatorView: View {
     
     var body: some View {
         Text(viewModel.displayValue)
+        // TODO: Add ability to create sections of the view
+        // TODO: Create a sample test and build test targets
+        // TODO: Create a dummy button
     }
 }
