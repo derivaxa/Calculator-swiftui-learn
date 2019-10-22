@@ -38,6 +38,10 @@ class ButterflyCalculatorTests: XCTestCase {
         XCTAssertEqual(view.displayValue, 0)
     }
     
+    func testEmptyValue() {
+         XCTAssertNotNil(view.displayValue)
+    }
+    
     func testSuccessAddition() {
         XCTAssertEqual(view.addition(view.displayValue + 20), 20)
     }
@@ -45,5 +49,4 @@ class ButterflyCalculatorTests: XCTestCase {
     func testFailureAddition() {
         XCTAssertNotEqual(view.addition(view.displayValue + 20), 10)
     }
-    
 }

@@ -17,9 +17,20 @@ struct CalculatorView: View {
     }
     
     var body: some View {
-        Text(String(viewModel.displayValue))
-        // TODO: Add ability to create sections of the view
-        // TODO: Create a sample test and build test targets
+        // TODO: Add ability to create sections of the view to create subsections of the keyboard
+        return VStack {
+            Text(String(viewModel.displayValue))
+            VStack{
+                ForEach(viewModel.dataSource, id: \.self) { number in
+                    HStack {
+                        Text(String(number))
+                            .background(Color.blue)
+                            .mask(Circle())
+                    }
+                }
+            }
+        }
         // TODO: Create a dummy button
+        
     }
 }

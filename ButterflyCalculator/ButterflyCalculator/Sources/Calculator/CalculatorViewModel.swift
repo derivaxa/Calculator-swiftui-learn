@@ -15,7 +15,7 @@ class CalculatorViewModel: ObservableObject, Identifiable {
     
     @Published var displayValue = 0
     /// dataSource is often the model for MVVM
-    @Published var dataSource = [1,2,3,4,5,6,7,8,9]
+    var dataSource = [1,2,3,4,5,6,7,8,9]
     
     /// - Parameter: integer to increment
     /// - Return: display + number
