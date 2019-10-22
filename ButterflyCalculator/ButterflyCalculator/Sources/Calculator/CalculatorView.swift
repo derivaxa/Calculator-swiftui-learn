@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// The main calculator view with display value and keyboard
 struct CalculatorView: View {
     @ObservedObject var viewModel = CalculatorViewModel()
     
