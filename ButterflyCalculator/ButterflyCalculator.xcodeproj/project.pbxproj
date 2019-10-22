@@ -186,6 +186,7 @@
 				06713674235D39730018D760 /* Sources */,
 				06713675235D39730018D760 /* Frameworks */,
 				06713676235D39730018D760 /* Resources */,
+				064E71F5235EC2600066EE06 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -204,6 +205,7 @@
 				0671367F235D39730018D760 /* Sources */,
 				06713680235D39730018D760 /* Frameworks */,
 				06713681235D39730018D760 /* Resources */,
+				064E71F6235EC2670066EE06 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -286,6 +288,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		064E71F5235EC2600066EE06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The below creates warning and error notifications with the following tags \nTAGS=\"TODO:|FIXME:|WARNING:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+		064E71F6235EC2670066EE06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The below creates warning and error notifications with the following tags \nTAGS=\"TODO:|FIXME:|WARNING:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
 		06B82794235EA1760063AEB5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -573,9 +609,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = angelamao.ButterflyCalculatorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ButterflyCalculator;
+				TEST_TARGET_NAME = "iOS Application (main)";
 			};
 			name = Debug;
 		};
@@ -593,9 +630,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = angelamao.ButterflyCalculatorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ButterflyCalculator;
+				TEST_TARGET_NAME = "iOS Application (main)";
 			};
 			name = Release;
 		};

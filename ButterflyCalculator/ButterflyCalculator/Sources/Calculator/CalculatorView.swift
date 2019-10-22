@@ -19,13 +19,18 @@ struct CalculatorView: View {
     var body: some View {
         // TODO: Add ability to create sections of the view to create subsections of the keyboard
         return VStack {
-            Text(String(viewModel.displayValue))
+            Text(String(viewModel.displayValue)).accessibility(identifier: "displayValue")
             VStack{
                 ForEach(viewModel.dataSource, id: \.self) { number in
                     HStack {
-                        Text(String(number))
+                        Group {
+                            Text(String(number))
+                            .frame(width: 250)
                             .background(Color.blue)
-                            .mask(Circle())
+                                .mask(Circle()).onTapGesture {
+                                    self.viewModel.displayValue += number
+                            }
+                        }
                     }
                 }
             }
