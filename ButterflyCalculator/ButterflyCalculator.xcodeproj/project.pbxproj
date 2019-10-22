@@ -45,10 +45,10 @@
 		0671366E235D39730018D760 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		06713671235D39730018D760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06713673235D39730018D760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06713678235D39730018D760 /* ButterflyCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButterflyCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06713678235D39730018D760 /* iOS Application Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Application Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0671367C235D39730018D760 /* ButterflyCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButterflyCalculatorTests.swift; sourceTree = "<group>"; };
 		0671367E235D39730018D760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06713683235D39730018D760 /* ButterflyCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButterflyCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06713683235D39730018D760 /* iOS Application UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Application UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06713687235D39730018D760 /* ButterflyCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButterflyCalculatorUITests.swift; sourceTree = "<group>"; };
 		06713689235D39730018D760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B82790235DA3530063AEB5 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				06713662235D396F0018D760 /* ButterflyCalculator.app */,
-				06713678235D39730018D760 /* ButterflyCalculatorTests.xctest */,
-				06713683235D39730018D760 /* ButterflyCalculatorUITests.xctest */,
+				06713678235D39730018D760 /* iOS Application Unit Tests.xctest */,
+				06713683235D39730018D760 /* iOS Application UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,9 +161,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		06713661235D396F0018D760 /* ButterflyCalculator */ = {
+		06713661235D396F0018D760 /* iOS Application (main) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0671368C235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculator" */;
+			buildConfigurationList = 0671368C235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application (main)" */;
 			buildPhases = (
 				0671365E235D396F0018D760 /* Sources */,
 				0671365F235D396F0018D760 /* Frameworks */,
@@ -174,14 +174,14 @@
 			);
 			dependencies = (
 			);
-			name = ButterflyCalculator;
+			name = "iOS Application (main)";
 			productName = ButterflyCalculator;
 			productReference = 06713662235D396F0018D760 /* ButterflyCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		06713677235D39730018D760 /* ButterflyCalculatorTests */ = {
+		06713677235D39730018D760 /* iOS Application Unit Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0671368F235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculatorTests" */;
+			buildConfigurationList = 0671368F235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application Unit Tests" */;
 			buildPhases = (
 				06713674235D39730018D760 /* Sources */,
 				06713675235D39730018D760 /* Frameworks */,
@@ -192,14 +192,14 @@
 			dependencies = (
 				0671367A235D39730018D760 /* PBXTargetDependency */,
 			);
-			name = ButterflyCalculatorTests;
+			name = "iOS Application Unit Tests";
 			productName = ButterflyCalculatorTests;
-			productReference = 06713678235D39730018D760 /* ButterflyCalculatorTests.xctest */;
+			productReference = 06713678235D39730018D760 /* iOS Application Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		06713682235D39730018D760 /* ButterflyCalculatorUITests */ = {
+		06713682235D39730018D760 /* iOS Application UI Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 06713692235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculatorUITests" */;
+			buildConfigurationList = 06713692235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application UI Tests" */;
 			buildPhases = (
 				0671367F235D39730018D760 /* Sources */,
 				06713680235D39730018D760 /* Frameworks */,
@@ -210,9 +210,9 @@
 			dependencies = (
 				06713685235D39730018D760 /* PBXTargetDependency */,
 			);
-			name = ButterflyCalculatorUITests;
+			name = "iOS Application UI Tests";
 			productName = ButterflyCalculatorUITests;
-			productReference = 06713683235D39730018D760 /* ButterflyCalculatorUITests.xctest */;
+			productReference = 06713683235D39730018D760 /* iOS Application UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -251,9 +251,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				06713661235D396F0018D760 /* ButterflyCalculator */,
-				06713677235D39730018D760 /* ButterflyCalculatorTests */,
-				06713682235D39730018D760 /* ButterflyCalculatorUITests */,
+				06713661235D396F0018D760 /* iOS Application (main) */,
+				06713677235D39730018D760 /* iOS Application Unit Tests */,
+				06713682235D39730018D760 /* iOS Application UI Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,12 +339,12 @@
 /* Begin PBXTargetDependency section */
 		0671367A235D39730018D760 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 06713661235D396F0018D760 /* ButterflyCalculator */;
+			target = 06713661235D396F0018D760 /* iOS Application (main) */;
 			targetProxy = 06713679235D39730018D760 /* PBXContainerItemProxy */;
 		};
 		06713685235D39730018D760 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 06713661235D396F0018D760 /* ButterflyCalculator */;
+			target = 06713661235D396F0018D760 /* iOS Application (main) */;
 			targetProxy = 06713684235D39730018D760 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -489,7 +489,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = angelamao.ButterflyCalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ButterflyCalculator;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -509,7 +509,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = angelamao.ButterflyCalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ButterflyCalculator;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -611,7 +611,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0671368C235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculator" */ = {
+		0671368C235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application (main)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0671368D235D39730018D760 /* Debug */,
@@ -620,7 +620,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0671368F235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculatorTests" */ = {
+		0671368F235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06713690235D39730018D760 /* Debug */,
@@ -629,7 +629,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		06713692235D39730018D760 /* Build configuration list for PBXNativeTarget "ButterflyCalculatorUITests" */ = {
+		06713692235D39730018D760 /* Build configuration list for PBXNativeTarget "iOS Application UI Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06713693235D39730018D760 /* Debug */,
