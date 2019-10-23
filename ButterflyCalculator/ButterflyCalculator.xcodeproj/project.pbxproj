@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0625F39323601DB60081F0D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0625F39223601DB60081F0D6 /* Buttons.swift */; };
 		06713666235D396F0018D760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06713665235D396F0018D760 /* AppDelegate.swift */; };
 		06713668235D396F0018D760 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06713667235D396F0018D760 /* SceneDelegate.swift */; };
 		0671366A235D396F0018D760 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06713669235D396F0018D760 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0625F39223601DB60081F0D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		06713662235D396F0018D760 /* ButterflyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterflyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06713665235D396F0018D760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06713667235D396F0018D760 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0625F39123601D9F0081F0D6 /* View Components */ = {
+			isa = PBXGroup;
+			children = (
+				0625F39223601DB60081F0D6 /* Buttons.swift */,
+			);
+			path = "View Components";
+			sourceTree = "<group>";
+		};
 		06713659235D396F0018D760 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		06B8278E235DA3040063AEB5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0625F39123601D9F0081F0D6 /* View Components */,
 				06B8278F235DA3130063AEB5 /* Calculator */,
 			);
 			path = Sources;
@@ -349,6 +360,7 @@
 				06B82793235DA3620063AEB5 /* CalculatorViewModel.swift in Sources */,
 				06B82791235DA3530063AEB5 /* CalculatorView.swift in Sources */,
 				06713666235D396F0018D760 /* AppDelegate.swift in Sources */,
+				0625F39323601DB60081F0D6 /* Buttons.swift in Sources */,
 				06713668235D396F0018D760 /* SceneDelegate.swift in Sources */,
 				0671366A235D396F0018D760 /* ContentView.swift in Sources */,
 			);

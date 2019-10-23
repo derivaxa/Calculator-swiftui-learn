@@ -18,16 +18,23 @@ struct CalculatorView: View {
     }
     
     var body: some View {
-        return VStack {
-            Text(String(viewModel.displayValue)).accessibility(identifier: "displayValue")
-            VStack(alignment: .center, spacing: .none, content: {
+        VStack(alignment: .trailing) {
+            Text(String(viewModel.displayValue))
+                .accessibility(identifier: "displayValue")
+                .foregroundColor(.white)
+            VStack(alignment: .leading, spacing: .none, content: {
                 numbersSection
             })
         }
+        .frame(minWidth: .zero, idealWidth: .infinity, maxWidth: .infinity, minHeight: .zero, idealHeight: .infinity, maxHeight: .infinity, alignment: .center)
+        .background(Color.black)
+        .edgesIgnoringSafeArea(.all)
     }
 }
+
 // MARK: - Subsections of the calculator view
 private extension CalculatorView {
+    
     var numbersSection: some View {
         ForEach(viewModel.dataSource, id: \.self) { row in
             HStack {
@@ -40,11 +47,12 @@ private extension CalculatorView {
                                 self.viewModel.displayValue += Int(number) ?? 0
                             }) {
                                 Text(String(number))
-                            }.frame(minWidth: .zero, maxWidth: .infinity, minHeight: .zero, maxHeight: .infinity)
-                                .accentColor(.white)
-                                .background(Color.blue).padding(.all)
-                        }.mask(Circle())
-
+                            }
+                            .padding(20)
+                            .accentColor(.white)
+                            .background(Color.blue)
+                            .mask(Circle())
+                        }
                     }
                 }
             }

@@ -12,10 +12,10 @@ import Combine
 /// ViewModel that stores the current state of the CalculatorView
 class CalculatorViewModel: ObservableObject, Identifiable {
     // TODO: Display value should remember the last value in userDefaults when app start up
-    
     @Published var displayValue = 0
     /// dataSource is often the model for MVVM
-    var dataSource = [["1","2","3"],["4","5","6"],["7","8","9","\u{207A}\u{2215}\u{208B}","log\u{2081}\u{2080}"]]
+    var dataSource =  [["7","8","9"],["4","5","6"],["1","2","3"]]
+    var operations = ["+","=","-","*","/"]
     
     /// - Parameter: integer to increment
     /// - Return: display + number
