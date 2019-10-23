@@ -20,27 +20,38 @@ struct CalculatorView: View {
     var body: some View {
         return VStack {
             Text(String(viewModel.displayValue)).accessibility(identifier: "displayValue")
-            VStack{
+            VStack(alignment: .center, spacing: .none, content: {
                 numbersSection
-            }
+            })
         }
     }
 }
+// MARK: - Subsections of the calculator view
 private extension CalculatorView {
     var numbersSection: some View {
-        ForEach(viewModel.dataSource, id: \.self) { number in
+        ForEach(viewModel.dataSource, id: \.self) { row in
             HStack {
                 // All containers in SwiftUI cannot have more than 10 children,
                 // Therefore, we use a group
-                Group {
-                    Text(String(number))
-                    .frame(width: 250)
-                    .background(Color.blue)
-                        .mask(Circle()).onTapGesture {
-                            self.viewModel.displayValue += number
+                ForEach(row, id: \.self) { number in
+                    VStack {
+                        Group {
+                            Button(action: {
+                                self.viewModel.displayValue += Int(number) ?? 0
+                            }) {
+                                Text(String(number))
+                            }.frame(minWidth: .zero, maxWidth: .infinity, minHeight: .zero, maxHeight: .infinity)
+                                .accentColor(.white)
+                                .background(Color.blue).padding(.all)
+                        }.mask(Circle())
+
                     }
                 }
             }
         }
     }
+}
+// MARK: - Supporting methods
+private extension CalculatorView {
+    
 }
