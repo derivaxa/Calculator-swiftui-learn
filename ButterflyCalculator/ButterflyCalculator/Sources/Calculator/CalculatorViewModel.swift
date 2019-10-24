@@ -26,8 +26,7 @@ class CalculatorViewModel: ObservableObject, Identifiable {
     /// - Return: display + number
     func addition(_ number: Int) -> Int {
         // FIXME: Handle floating point numbers
-        // FIXME: Handle bounds of integers
-        displayValue += number
+        displayValue = displayValue &+ number
         return displayValue
     }
 }

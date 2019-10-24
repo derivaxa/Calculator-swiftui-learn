@@ -46,6 +46,11 @@ class ButterflyCalculatorTests: XCTestCase {
         XCTAssertEqual(view.addition(view.displayValue + 20), 20)
     }
     
+    func testSuccessOverflowAddition() {
+        view.addition(1)
+        XCTAssertNoThrow(view.addition(Int.max))
+    }
+    
     func testFailureAddition() {
         XCTAssertNotEqual(view.addition(view.displayValue + 20), 10)
     }
