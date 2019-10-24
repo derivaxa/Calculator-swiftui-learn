@@ -10,6 +10,7 @@ import SwiftUI
 
 /// The main calculator view with display value and keyboard
 struct CalculatorView: View {
+    // Note: Dependency injection will help with creating the mocking view
     @ObservedObject var viewModel = CalculatorViewModel()
     
     @State private var userIsTyping = false // User should be able to type more than single digit
@@ -37,7 +38,7 @@ struct CalculatorView: View {
 private extension CalculatorView {
     // Number parser
     var numbersSection: some View {
-        ForEach(viewModel.dataSource, id: \.self) { row in
+        ForEach(viewModel.keypad, id: \.self) { row in
             HStack {
                 // All containers in SwiftUI cannot have more than 10 children,
                 // Therefore, we use a group
@@ -65,13 +66,14 @@ private extension CalculatorView {
 
     // Main arithmetic operations parser
     var operationsSection: some View {
-        ForEach(viewModel.operations, id:\.self) { operation in
+        ForEach(viewModel.operations, id:\.self) { item in
             HStack {
                 Group {
                     Button(action: {
-                        print("Tapped: \(operation)")
+                        print("Tapped: \(item)")
+                        self.tapped(operation: item)
                     }) {
-                        Text(operation)
+                        Text(item)
                     }
                 }
             }
@@ -83,10 +85,17 @@ private extension CalculatorView {
     private func tapped(number: String) {
         print("Is user typing? \(userIsTyping)")
         if (userIsTyping) {
+            // TODO: Move this logic to view model & check for integer bounds
+            // let minValue = Int.max
+            // numbers should fit between  -2,147,483,648 and 2,147,483,647
             currentNumber = (Int(currentNumber) != 0) ? currentNumber + number : number
         } else {
             userIsTyping = true
             currentNumber = number
         }
+    }
+    
+    private func tapped(operation: String) {
+        userIsTyping = false
     }
 }
