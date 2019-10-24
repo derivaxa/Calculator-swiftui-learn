@@ -10,26 +10,30 @@ import SwiftUI
 
 /// The main calculator view with display value and keyboard
 struct CalculatorView: View {
-    // Note: Dependency injection will help with creating the mocking view
+    
     @ObservedObject var viewModel = CalculatorViewModel()
+    @State private var userIsTyping = false
     
-    @State private var userIsTyping = false // User should be able to type more than single digit
-    @State private var currentNumber = "0" // Recommended to have states private
-    
-    init(_ viewModel: CalculatorViewModel) {
-        self.viewModel = viewModel
-    }
+    //    init(_ viewModel: CalculatorViewModel) {
+    //        self.viewModel = viewModel
+    //    }
     
     var body: some View {
-        VStack(alignment: .trailing) {
-            Text(String(self.currentNumber))
-                .accessibility(identifier: "displayValue")
-            VStack(alignment: .leading, spacing: .none, content: {
-                numbersSection
-            })
-            VStack {
-                operationsSection
-            }
+        return
+            VStack(alignment: .trailing) {
+                Text(viewModel.displayValue)
+                    .accessibility(identifier: "displayValue")
+                    .font(.title)
+                HStack {
+                    VStack(alignment: .leading, spacing: .none, content: {
+                        numbersSection
+                    })
+                    
+                    VStack {
+                        operationsSection
+                    }
+                }
+                
         }
     }
 }
@@ -46,16 +50,16 @@ private extension CalculatorView {
                     VStack {
                         Group {
                             Button(action: {
-                                self.tapped(number: number)
+                                self.viewModel.tapped(number: number)
                                 print("Tapped: \(number)")
                             }) {
                                 Text(String(number))
                             }
                                 // TODO: Reuse this section of styling across the app
-                            .padding(20)
-                            .accentColor(.white)
-                            .background(Color.blue)
-                            .mask(Circle())
+                                .padding(20)
+                                .accentColor(.white)
+                                .background(Color.blue)
+                                .mask(Circle())
                         }
                     }
                 }
@@ -63,7 +67,7 @@ private extension CalculatorView {
         }
     }
     
-
+    
     // Main arithmetic operations parser
     var operationsSection: some View {
         ForEach(viewModel.operations, id:\.self) { item in
@@ -71,7 +75,7 @@ private extension CalculatorView {
                 Group {
                     Button(action: {
                         print("Tapped: \(item)")
-                        self.tapped(operation: item)
+                        self.viewModel.tapped(operation: item)
                     }) {
                         Text(item)
                     }
@@ -80,22 +84,4 @@ private extension CalculatorView {
         }
     }
 }
-// MARK: - Supporting methods
-private extension CalculatorView {
-    private func tapped(number: String) {
-        print("Is user typing? \(userIsTyping)")
-        if (userIsTyping) {
-            // TODO: Move this logic to view model & check for integer bounds
-            // let minValue = Int.max
-            // numbers should fit between  -2,147,483,648 and 2,147,483,647
-            currentNumber = (Int(currentNumber) != 0) ? currentNumber + number : number
-        } else {
-            userIsTyping = true
-            currentNumber = number
-        }
-    }
-    
-    private func tapped(operation: String) {
-        userIsTyping = false
-    }
-}
+
