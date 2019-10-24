@@ -11,7 +11,9 @@ import SwiftUI
 /// The main calculator view with display value and keyboard
 struct CalculatorView: View {
     @ObservedObject var viewModel = CalculatorViewModel()
-    @State private var currentNumber = 0 // Recommended to have states private
+    
+    @State private var userIsTyping = false // User should be able to type more than single digit
+    @State private var currentNumber = "0" // Recommended to have states private
     
     init(_ viewModel: CalculatorViewModel) {
         self.viewModel = viewModel
@@ -19,22 +21,21 @@ struct CalculatorView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Text(String(viewModel.displayValue))
+            Text(String(self.currentNumber))
                 .accessibility(identifier: "displayValue")
-                .foregroundColor(.white)
             VStack(alignment: .leading, spacing: .none, content: {
                 numbersSection
             })
+            VStack {
+                operationsSection
+            }
         }
-        .frame(minWidth: .zero, idealWidth: .infinity, maxWidth: .infinity, minHeight: .zero, idealHeight: .infinity, maxHeight: .infinity, alignment: .center)
-        .background(Color.black)
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
 // MARK: - Subsections of the calculator view
 private extension CalculatorView {
-    
+    // Number parser
     var numbersSection: some View {
         ForEach(viewModel.dataSource, id: \.self) { row in
             HStack {
@@ -44,10 +45,12 @@ private extension CalculatorView {
                     VStack {
                         Group {
                             Button(action: {
-                                self.viewModel.displayValue += Int(number) ?? 0
+                                self.tapped(number: number)
+                                print("Tapped: \(number)")
                             }) {
                                 Text(String(number))
                             }
+                                // TODO: Reuse this section of styling across the app
                             .padding(20)
                             .accentColor(.white)
                             .background(Color.blue)
@@ -58,8 +61,32 @@ private extension CalculatorView {
             }
         }
     }
+    
+
+    // Main arithmetic operations parser
+    var operationsSection: some View {
+        ForEach(viewModel.operations, id:\.self) { operation in
+            HStack {
+                Group {
+                    Button(action: {
+                        print("Tapped: \(operation)")
+                    }) {
+                        Text(operation)
+                    }
+                }
+            }
+        }
+    }
 }
 // MARK: - Supporting methods
 private extension CalculatorView {
-    
+    private func tapped(number: String) {
+        print("Is user typing? \(userIsTyping)")
+        if (userIsTyping) {
+            currentNumber = (Int(currentNumber) != 0) ? currentNumber + number : number
+        } else {
+            userIsTyping = true
+            currentNumber = number
+        }
+    }
 }

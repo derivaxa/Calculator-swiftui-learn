@@ -36,6 +36,20 @@ class ButterflyCalculatorUITests: XCTestCase {
 }
 
 extension ButterflyCalculatorUITests {
+    
+    /// Simple test to check if user can type more than a single digit
+    func testSuccessBigNumber() {
+        let app = XCUIApplication()
+        app.launch()
+        if let number = app.staticTexts["displayValue"].value as? Int {
+            XCTAssertEqual(Int(number), 0)
+        }
+        reversePressNumbers(app)
+        if let number = app.staticTexts["displayValue"].value as? Int {
+            XCTAssertEqual(Int(number), 987654321)
+        }
+    }
+    
     /// Simple test to check that addition works when button is pressed
     func testSuccessAddition() {
         // UI tests must launch the application that they test.
