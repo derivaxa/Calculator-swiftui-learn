@@ -22,7 +22,7 @@ struct CalculatorBrain {
         case equals
     }
     
-    private enum CalculatorBrainError: Error {
+    enum CalculatorBrainError: Error {
         case wrongOperation
     }
     
@@ -41,27 +41,27 @@ struct CalculatorBrain {
         "=" : Operation.equals
     ]
     
-    mutating func performOperation(_ symbol: String) {
-        if let operation = operations[symbol] {
-            switch operation {
-            case .constant(let value):
-                accumulator = value
-            case .unary(let f):
-                if accumulator != nil {
-                    accumulator = f(accumulator!)
-                }
-            case .binary(let f):
-                if accumulator != nil {
-                    pendingBinaryOperation = PendingBinaryOperation(function: f, firstOperand: accumulator!)
-                    accumulator = nil
-                }
-            case .equals:
-                performPendingBinaryOperation()
+    mutating func performOperation(_ symbol: String) throws {
+        guard let operation = operations[symbol] else {
+            throw CalculatorBrainError.wrongOperation
+        }
+        switch operation {
+        case .constant(let value):
+            accumulator = value
+        case .unary(let f):
+            if accumulator != nil {
+                accumulator = f(accumulator!)
             }
-        } else {
-            print("wrong operation symbol")
+        case .binary(let f):
+            if accumulator != nil {
+                pendingBinaryOperation = PendingBinaryOperation(function: f, firstOperand: accumulator!)
+                accumulator = nil
+            }
+        case .equals:
+            performPendingBinaryOperation()
         }
     }
+
     
     // Private mutating func for performing pending binary operations
     mutating func performPendingBinaryOperation() {
