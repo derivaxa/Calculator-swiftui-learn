@@ -49,9 +49,10 @@ class CalculatorBrainTests: XCTestCase {
     }
     
     func testSuccessWrongOperation() {
-        brain.performOperation("cos30")
+        brain.setOperand(Double(0))
+        brain.performOperation("cos")
         if let res = brain.result {
-            XCTAssertNotNil(res, "This should not be nil")
+            XCTAssertEqual(res, Double(1.0))
         }
     }
 
