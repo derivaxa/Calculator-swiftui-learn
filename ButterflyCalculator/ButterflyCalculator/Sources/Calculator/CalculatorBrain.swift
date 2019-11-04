@@ -22,7 +22,7 @@ struct CalculatorBrain {
         case equals
     }
     
-    enum CalculatorBrainError: Error {
+    private enum CalculatorBrainError: Error {
         case wrongOperation
     }
     

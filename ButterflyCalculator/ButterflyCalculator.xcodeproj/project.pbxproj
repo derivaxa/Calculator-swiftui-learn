@@ -47,6 +47,7 @@
 		0625F3972361A2170081F0D6 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		0636FB12237015A600900D5C /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		0636FB14237018DC00900D5C /* CalculatorBrainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrainTests.swift; sourceTree = "<group>"; };
+		0636FB16237060FC00900D5C /* CalculatorBrainTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CalculatorBrainTestPlan.xctestplan; sourceTree = "<group>"; };
 		06713662235D396F0018D760 /* ButterflyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterflyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06713665235D396F0018D760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06713667235D396F0018D760 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		0671367B235D39730018D760 /* ButterflyCalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				0636FB16237060FC00900D5C /* CalculatorBrainTestPlan.xctestplan */,
 				0636FB14237018DC00900D5C /* CalculatorBrainTests.swift */,
 				0671367C235D39730018D760 /* ButterflyCalculatorTests.swift */,
 				0671367E235D39730018D760 /* Info.plist */,

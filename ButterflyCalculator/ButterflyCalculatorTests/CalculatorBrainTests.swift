@@ -55,6 +55,18 @@ class CalculatorBrainTests: XCTestCase {
             XCTAssertNotEqual(res, 150)
         }
     }
+    
+    func testMultiplication() {
+        do {
+            try brain.performOperation("1*10")
+            testSuccessMultiplication()
+            testSuccessOverloadMultiplication()
+            testFailMultiplication()
+            testFailZeroMultiplication()
+        } catch let error {
+            print(error)
+        }
+    }
 
     func testSuccessCosOperation() {
         // Given

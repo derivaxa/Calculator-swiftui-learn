@@ -1,0 +1,41 @@
+{
+  "configurations" : [
+    {
+      "id" : "065EDEF9-91D6-47A1-A697-6DAD3A89D188",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    },
+    {
+      "enabled" : false,
+      "id" : "82862D9A-C54E-450F-979C-A27927686503",
+      "name" : "Configuration 2",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "ButterflyCalculatorTests\/testExample()",
+        "ButterflyCalculatorTests\/testPerformanceExample()",
+        "CalculatorBrainTests\/testExample()",
+        "CalculatorBrainTests\/testPerformanceExample()",
+        "CalculatorBrainTests\/testSuccessCosOperation()",
+        "CalculatorBrainTests\/testSuccessWrongOperation()"
+      ],
+      "target" : {
+        "containerPath" : "container:ButterflyCalculator.xcodeproj",
+        "identifier" : "06713677235D39730018D760",
+        "name" : "iOS Application Unit Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
