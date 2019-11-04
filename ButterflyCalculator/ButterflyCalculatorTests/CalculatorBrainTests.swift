@@ -1,8 +1,8 @@
 //
-//  ButterflyCalculatorTests.swift
-//  ButterflyCalculatorTests
+//  CalculatorBrainTests.swift
+//  iOS Application Unit Tests
 //
-//  Created by Angela Mao on 21/10/19.
+//  Created by Angela Mao on 4/11/19.
 //  Copyright © 2019 Angela Mao. All rights reserved.
 //
 
@@ -10,9 +10,10 @@ import XCTest
 
 @testable import ButterflyCalculator
 
-class ButterflyCalculatorTests: XCTestCase {
-    
-        
+class CalculatorBrainTests: XCTestCase {
+
+    var brain = CalculatorBrain()
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -33,26 +34,25 @@ class ButterflyCalculatorTests: XCTestCase {
         }
     }
     
+    func testSuccessAddition() {
+        brain.performOperation("1 + 2")
+        if let res = brain.result {
+            XCTAssertEqual(res, 3)
+        }
+    }
     
-//    // MARK: - Simple calculation tests
-//    func testSuccessModelView() {
-//        XCTAssertEqual(view.displayValue, 0)
-//    }
-//
-//    func testEmptyValue() {
-//         XCTAssertNotNil(view.displayValue)
-//    }
-//
-//    func testSuccessAddition() {
-//        XCTAssertEqual(view.addition(view.displayValue + 20), 20)
-//    }
-//
-//    func testSuccessOverflowAddition() {
-//        view.addition(1)
-//        XCTAssertNoThrow(view.addition(Int.max))
-//    }
-//
-//    func testFailureAddition() {
-//        XCTAssertNotEqual(view.addition(view.displayValue + 20), 10)
-//    }
+    func testFailAddition() {
+        brain.performOperation("20 + 3")
+        if let res = brain.result {
+            XCTAssertNotEqual(res, 150)
+        }
+    }
+    
+    func testSuccessWrongOperation() {
+        brain.performOperation("cos30")
+        if let res = brain.result {
+            XCTAssertNotNil(res, "This should not be nil")
+        }
+    }
+
 }
