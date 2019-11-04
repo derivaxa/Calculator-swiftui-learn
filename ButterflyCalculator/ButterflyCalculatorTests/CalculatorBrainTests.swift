@@ -49,6 +49,8 @@ class CalculatorBrainTests: XCTestCase {
     }
     
     func testSuccessWrongOperation() {
+        
+        // TODO: Fix this test to catch a throw error
         brain.setOperand(Double(0))
         brain.performOperation("cos")
         if let res = brain.result {
