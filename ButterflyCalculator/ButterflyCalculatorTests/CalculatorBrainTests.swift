@@ -33,28 +33,43 @@ class CalculatorBrainTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-//
-//    func testSuccessAddition() {
-//        brain.performOperation("1 + 2")
-//        if let res = brain.result {
-//            XCTAssertEqual(res, 3)
-//        }
-//    }
-//
-//    func testFailAddition() {
-//        brain.performOperation("20 + 3")
-//        if let res = brain.result {
-//            XCTAssertNotEqual(res, 150)
-//        }
-//    }
-//
-//    func testSuccessCosOperation() {
-//        brain.setOperand(Double(0))
-//        brain.performOperation("cos")
-//        if let res = brain.result {
-//            XCTAssertEqual(res, Double(1.0))
-//        }
-//    }
+    
+    func testAddition() {
+        do {
+            try brain.performOperation("1 + 2")
+            testSuccessAddition()
+            testFailAddition()
+        } catch let error {
+            print(error) //Good for handling any regression errors
+        }
+    }
+
+    func testSuccessAddition() {
+        if let res = brain.result {
+            XCTAssertEqual(res, 3)
+        }
+    }
+
+    func testFailAddition() {
+        if let res = brain.result {
+            XCTAssertNotEqual(res, 150)
+        }
+    }
+
+    func testSuccessCosOperation() {
+        // Given
+        brain.setOperand(Double(0))
+        // When
+        do {
+            try brain.performOperation("cos")
+            if let res = brain.result {
+                // Then
+                XCTAssertEqual(res, Double(1.0))
+            }
+        } catch let error {
+            print(error)
+        }
+    }
     
     func testSuccessWrongOperation() {
         XCTAssertThrowsError(try brain.performOperation("sin")) { (error) in
