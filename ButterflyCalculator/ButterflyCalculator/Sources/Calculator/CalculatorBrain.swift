@@ -22,6 +22,11 @@ struct CalculatorBrain {
         case equals
     }
     
+    private enum CalculatorBrainError: Error {
+        case wrongOperation
+    }
+    
+    
     // private extensible dictionary of operations with closures
     private var operations: Dictionary<String,Operation> = [
         "π" : Operation.constant(Double.pi),

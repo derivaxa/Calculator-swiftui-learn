@@ -48,14 +48,18 @@ class CalculatorBrainTests: XCTestCase {
         }
     }
     
-    func testSuccessWrongOperation() {
-        
-        // TODO: Fix this test to catch a throw error
+    func testSuccessCosOperation() {
         brain.setOperand(Double(0))
         brain.performOperation("cos")
         if let res = brain.result {
             XCTAssertEqual(res, Double(1.0))
         }
+    }
+    
+    func testSuccessWrongOperation() {
+//        brain.setOperand(Double(0))
+//        brain.performOperation("sin")
+        XCTAssertThrowsError(brain.performOperation("sin"))
     }
 
 }
