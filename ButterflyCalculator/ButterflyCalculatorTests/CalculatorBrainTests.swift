@@ -35,68 +35,75 @@ class CalculatorBrainTests: XCTestCase {
         }
     }
     
-    func testAddition() {
+    func binaryOperation(_ n1: Double,_ operation: String,_ n2: Double) {
         do {
-            brain.setOperand(Double(1.0))
-            try brain.performOperation("+")
-            brain.setOperand(Double(2.0))
-            try brain.performOperation("=")
-            testSuccessAddition()
-            testFailAddition()
+            brain.setOperand(n1)
+            try brain.performOperation(operation)
+            brain.setOperand(n2)
+            equalOperation()
         } catch let error {
-            print(error) //Good for handling any regression errors
+            print(error)
+        }
+    }
+    
+    func equalOperation() {
+        do {
+            try brain.performOperation("=")
+        } catch let error {
+            print(error)
         }
     }
 
     func testSuccessAddition() {
+        binaryOperation(Double(1.0), "+", Double(2.0))
+        equalOperation()
         if let res = brain.result {
             XCTAssertEqual(res, 3)
         }
     }
 
     func testFailAddition() {
+        binaryOperation(Double(1.0), "+", Double(2.0))
+        equalOperation()
         if let res = brain.result {
             XCTAssertNotEqual(res, 150)
         }
     }
     
-    func testMultiplication() {
-        do {
-            try brain.performOperation("1 x 10")
-            testSuccessMultiplication()
-            testFailMultiplication()
-            let bigInt = Int.max
-            try brain.performOperation("\(bigInt)x10")
-            testSuccessOverloadMultiplication()
-            try brain.performOperation("0x20")
-            testFailZeroMultiplication()
-        } catch let error {
-            print(error)
-        }
-    }
-    
     func testSuccessMultiplication() {
+        
+        //FIXME: Error with output - returns 1.0 instead of 10.0
+        binaryOperation(1.0, "x", 10.0)
+        equalOperation()
         if let res = brain.result {
-            XCTAssertEqual(res,10)
+            XCTAssertEqual(res, 10.0)
         }
     }
     
     func testFailMultiplication() {
+        binaryOperation(1.0, "x", 10.0)
+        equalOperation()
         if let res = brain.result {
-            XCTAssertEqual(res,200)
+            XCTAssertNotEqual(res,200)
         }
     }
     
     func testSuccessOverloadMultiplication() {
         // TODO: Update this to reflect how the calculator would work with overload operators
+        let bigDouble = Double.greatestFiniteMagnitude
+        binaryOperation(Double(bigDouble), "x", 1.00001)
+        equalOperation()
         if let res = brain.result {
             print(res)
         }
     }
     
     func testFailZeroMultiplication() {
+        // FIXME: Output incorrect
+        binaryOperation(1.0, "x", 0.0)
+        equalOperation()
         if let res = brain.result {
-            XCTAssertEqual(res,0)
+            XCTAssertEqual(res,0.0)
         }
     }
 
