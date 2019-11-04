@@ -10,6 +10,7 @@ import XCTest
 
 @testable import ButterflyCalculator
 
+/// Collection of unit tests covering the functions in CalculatorBrain. These include catching errors and overflow checking.
 class CalculatorBrainTests: XCTestCase {
 
     var brain = CalculatorBrain()
@@ -36,6 +37,7 @@ class CalculatorBrainTests: XCTestCase {
     
     func testAddition() {
         do {
+            brain.setOperand(Double(1.0))
             try brain.performOperation("1 + 2")
             testSuccessAddition()
             testFailAddition()
@@ -58,13 +60,41 @@ class CalculatorBrainTests: XCTestCase {
     
     func testMultiplication() {
         do {
-            try brain.performOperation("1*10")
+            try brain.performOperation("1 x 10")
             testSuccessMultiplication()
-            testSuccessOverloadMultiplication()
             testFailMultiplication()
+            let bigInt = Int.max
+            try brain.performOperation("\(bigInt)x10")
+            testSuccessOverloadMultiplication()
+            try brain.performOperation("0x20")
             testFailZeroMultiplication()
         } catch let error {
             print(error)
+        }
+    }
+    
+    func testSuccessMultiplication() {
+        if let res = brain.result {
+            XCTAssertEqual(res,10)
+        }
+    }
+    
+    func testFailMultiplication() {
+        if let res = brain.result {
+            XCTAssertEqual(res,200)
+        }
+    }
+    
+    func testSuccessOverloadMultiplication() {
+        // TODO: Update this to reflect how the calculator would work with overload operators
+        if let res = brain.result {
+            print(res)
+        }
+    }
+    
+    func testFailZeroMultiplication() {
+        if let res = brain.result {
+            XCTAssertEqual(res,0)
         }
     }
 

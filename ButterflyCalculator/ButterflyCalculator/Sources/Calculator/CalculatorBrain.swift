@@ -22,8 +22,8 @@ struct CalculatorBrain {
         case equals
     }
     
-    private enum CalculatorBrainError: Error {
-        case wrongOperation
+    enum CalculatorBrainError: Error {
+        case wrongOperation(String)
     }
     
     
@@ -43,7 +43,7 @@ struct CalculatorBrain {
     
     mutating func performOperation(_ symbol: String) throws {
         guard let operation = operations[symbol] else {
-            throw CalculatorBrainError.wrongOperation
+            throw CalculatorBrainError.wrongOperation(symbol)
         }
         switch operation {
         case .constant(let value):
