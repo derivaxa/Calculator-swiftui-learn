@@ -7,12 +7,14 @@
 //
 
 import XCTest
+import Combine
+
 @testable import ButterflyCalculator
 
 class ButterflyCalculatorTests: XCTestCase {
     
-    let view = CalculatorViewModel()
-
+    var brain = CalculatorBrain()
+        
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -32,6 +34,16 @@ class ButterflyCalculatorTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testOperation() {
+        brain.performOperation("1 + 2")
+        if let res = brain.result {
+            XCTAssertEqual(res, 3)
+        }
+    }
+    
+    func
+    
     
 //    // MARK: - Simple calculation tests
 //    func testSuccessModelView() {
