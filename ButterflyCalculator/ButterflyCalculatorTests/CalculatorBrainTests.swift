@@ -38,7 +38,9 @@ class CalculatorBrainTests: XCTestCase {
     func testAddition() {
         do {
             brain.setOperand(Double(1.0))
-            try brain.performOperation("1 + 2")
+            try brain.performOperation("+")
+            brain.setOperand(Double(2.0))
+            try brain.performOperation("=")
             testSuccessAddition()
             testFailAddition()
         } catch let error {
