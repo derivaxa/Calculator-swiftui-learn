@@ -29,10 +29,11 @@ struct CalculatorBrainView: View {
                 self.displayValue
                 HStack(spacing: 0.0) {
                     VStack (spacing: 0.0) {
-                        calculatorPad.layoutPriority(1.0)
+                        self.calculatorPad.layoutPriority(1.0)
                     }
                     self.displaySidePad
                 }
+                Spacer()
             }
         }
     }
