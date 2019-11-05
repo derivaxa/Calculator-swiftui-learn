@@ -32,27 +32,4 @@ class ButterflyCalculatorTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    
-//    // MARK: - Simple calculation tests
-//    func testSuccessModelView() {
-//        XCTAssertEqual(view.displayValue, 0)
-//    }
-//
-//    func testEmptyValue() {
-//         XCTAssertNotNil(view.displayValue)
-//    }
-//
-//    func testSuccessAddition() {
-//        XCTAssertEqual(view.addition(view.displayValue + 20), 20)
-//    }
-//
-//    func testSuccessOverflowAddition() {
-//        view.addition(1)
-//        XCTAssertNoThrow(view.addition(Int.max))
-//    }
-//
-//    func testFailureAddition() {
-//        XCTAssertNotEqual(view.addition(view.displayValue + 20), 10)
-//    }
 }

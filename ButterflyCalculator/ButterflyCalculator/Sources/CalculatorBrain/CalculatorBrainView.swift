@@ -13,16 +13,13 @@ import SwiftUI
 /// The main calculator view with display value and keyboard
 struct CalculatorBrainView: View {
     
-    // Keeps track of our viewModel
-//    @ObservedObject var viewModel = CalculatorBrainViewModel()
-    @State private var brain = CalculatorBrain()
-    
     // State lets all references know that this variable has been updated
+    @State private var brain = CalculatorBrain()
     @State private var display = "0"
     @State private var userIsInTheMiddleOfTyping = false
     
-    // Buttons
-    let topSymbols = ["AC", "\u{207A}\u{2215}\u{208B}","√"]
+    // Keypad Buttons
+    let topSymbols = ["AC", " ","√"]
     let sideSymbols = ["×", "÷", "+","−","="]
     let numbers = [["7","8","9"],["4","5","6"],["1","2","3"]]
     
@@ -135,7 +132,7 @@ private extension CalculatorBrainView {
                     Text(item).frame(minWidth: 0, maxWidth: .infinity)
                 }.padding(20)
                     .accentColor(.white)
-                    .background(Color.orange)
+                    .background(Color.pink)
                     .mask(Circle())
             }
         }

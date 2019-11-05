@@ -39,7 +39,7 @@ struct CalculatorBrain {
         "AC": Operation.clear,
         "√" : Operation.unary(sqrt),
         "cos" : Operation.unary(cos),
-        "±" : Operation.unary({ -$0 }),
+        "\u{207A}\u{2215}\u{208B}" : Operation.unary({ -$0 }),
         "×" : Operation.binary({ $0 * $1 }),
         "÷" : Operation.binary({ $0 / $1 }),
         "+" : Operation.binary({ $0 + $1 }),
