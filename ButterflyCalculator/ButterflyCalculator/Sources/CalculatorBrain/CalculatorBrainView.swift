@@ -113,11 +113,11 @@ private extension CalculatorBrainView {
     var displaySidePad: some View {
         return VStack(spacing: 10.0) {
             ForEach(sideSymbols, id:\.self) { item in
-                Button(action: {
+                CustomButton(action: {
                     self.touchUpInside(item)
                 }) {
                     Text(item)
-                }.buttonStyle(PurpleButtons())
+                }
             }
         }
     }

@@ -8,6 +8,26 @@
 
 import SwiftUI
 
+// TODO: Remove boilerplate code
+
+struct CustomButton<T: View>: View {
+    let action: () -> Void
+    let content: T
+
+    init(action: @escaping() -> Void, @ViewBuilder content: () -> T) {
+        self.action = action
+        self.content = content()
+    }
+    
+    var body: some View {
+        Button(action: action) {
+            content.padding(20.0)
+            .foregroundColor(.white)
+            .background(Color.purple)
+            .mask(Circle())
+        }
+    }
+}
 
 struct PurpleButtons: ButtonStyle {
     
