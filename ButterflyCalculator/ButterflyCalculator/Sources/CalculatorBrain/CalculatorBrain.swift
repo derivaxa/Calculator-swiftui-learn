@@ -17,7 +17,7 @@ struct CalculatorBrain {
     private var pendingBinaryOperation: PendingBinaryOperation?
 
     /// Type inferencing of opertions
-    private enum Operation {
+    enum Operation {
         case constant(Double)
         case unary((Double) -> Double)
         case binary((Double,Double) -> Double)
@@ -31,11 +31,11 @@ struct CalculatorBrain {
     
     
     // private extensible dictionary of operations with closures
-    private var operations: Dictionary<String,Operation> = [
-        "π" : Operation.constant(Double.pi),
-        "e" : Operation.constant(M_E),
-        "√" : Operation.unary(sqrt),
-        "cos" : Operation.unary(cos),
+    var operations: Dictionary<String,Operation> = [
+//        "π" : Operation.constant(Double.pi),
+//        "e" : Operation.constant(M_E),
+//        "√" : Operation.unary(sqrt),
+//        "cos" : Operation.unary(cos),
         "±" : Operation.unary({ -$0 }),
         "×" : Operation.binary({ $0 * $1 }),
         "÷" : Operation.binary({ $0 / $1 }),

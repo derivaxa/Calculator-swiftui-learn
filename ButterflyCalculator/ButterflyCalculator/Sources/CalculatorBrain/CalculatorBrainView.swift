@@ -23,7 +23,7 @@ struct CalculatorBrainView: View {
                 Text(display)
                     .foregroundColor(Color.white)
             }
-            keyboard
+            keyboard.frame(width: UIScreen.main.bounds.width)
         }
     }
 }
@@ -36,13 +36,29 @@ struct CalculatorBrainView_Previews: PreviewProvider {
                 .previewLayout(.sizeThatFits)
                 .environment(\.sizeCategory, item)
         }
-
     }
 }
 private extension CalculatorBrainView {
+
     var keyboard: some View {
-        HStack {
-            Text("Hello")
+        let keys = viewModel.brain.operations.map {$0.key}
+
+        return HStack {
+            ForEach(keys, id:\.self) { item in
+                HStack {
+                    Group {
+                        Button(action: {
+                            print("Tapped: \(item)")
+//                            self.tapped(operation: item)
+                        }) {
+                            Text(item)
+                        }.padding(20)
+                        .accentColor(.white)
+                        .background(Color.orange)
+                        .mask(Circle())
+                    }
+                }
+            }
         }
     }
 }
