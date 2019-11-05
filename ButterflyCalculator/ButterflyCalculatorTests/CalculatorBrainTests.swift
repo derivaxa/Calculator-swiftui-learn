@@ -87,17 +87,15 @@ class CalculatorBrainTests: XCTestCase {
     }
     
     func testSuccessOverloadMultiplication() {
-        // TODO: Update this to reflect how the calculator would work with overload operators
         let bigDouble = Double.greatestFiniteMagnitude
         binaryOperation(Double(bigDouble), "×", 2.0)
         equalOperation()
         if let res = brain.result {
-            print(res)
+            XCTAssertEqual(res, Double.infinity)
         }
     }
     
     func testFailZeroMultiplication() {
-        // FIXME: Output incorrect
         binaryOperation(Double(1.0), "×", 0.0)
         equalOperation()
         if let res = brain.result {

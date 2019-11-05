@@ -10,11 +10,13 @@ import Foundation
 
 struct CalculatorBrain {
     
-    // optional on initialization = not set
+    /// Stores current result of total calculation
     private var accumulator: Double?
     
-    // private enum specifying operation types
-    // with an associated value
+    /// State if a binary operation is currently in use
+    private var pendingBinaryOperation: PendingBinaryOperation?
+
+    /// Type inferencing of opertions
     private enum Operation {
         case constant(Double)
         case unary((Double) -> Double)
@@ -22,6 +24,7 @@ struct CalculatorBrain {
         case equals
     }
     
+    /// Error cases for testing purposes
     enum CalculatorBrainError: Error {
         case wrongOperation(String)
     }
@@ -41,6 +44,11 @@ struct CalculatorBrain {
         "=" : Operation.equals
     ]
     
+    /// Holds main logic of the program
+    ///
+    /// May throw error if operation or operand does not exist
+    ///
+    /// - Parameter symbol: All operand and operation symbols
     mutating func performOperation(_ symbol: String) throws {
         guard let operation = operations[symbol] else {
             throw CalculatorBrainError.wrongOperation(symbol)
@@ -61,41 +69,37 @@ struct CalculatorBrain {
             performPendingBinaryOperation()
         }
     }
-
     
-    // Private mutating func for performing pending binary operations
+    // MARK: - Manages binary operations
     mutating func performPendingBinaryOperation() {
         if pendingBinaryOperation != nil && accumulator != nil {
             accumulator = pendingBinaryOperation!.perform(with: accumulator!)
             pendingBinaryOperation = nil
         }
     }
-    
-    // Private optional Pending Binary Operation
-    private var pendingBinaryOperation: PendingBinaryOperation?
-    
-    // embedded private struct to support binary operations
-    // with a constant function and pending first operand
-    // doesn't need mutating since its just returning a value
+        
     private struct PendingBinaryOperation {
         let function: (Double, Double) -> Double
         let firstOperand: Double
         
+        /// - Return: Value from completing a binary operation
+        /// - Parameter secondOperand: The last inputted value
         func perform(with secondOperand: Double) -> Double {
             return function(firstOperand, secondOperand)
         }
     }
     
-    // mark method as mutating in order to assign to property
+    /// Mutates the result property
+    ///
+    /// - Parameter operand: The value to operate on
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
     }
     
-    // return an optional since the accumulator can be not set
+    /// - Return: Optional as accumulator can be nil
     var result: Double? {
         get {
             return accumulator
         }
     }
-    
 }
