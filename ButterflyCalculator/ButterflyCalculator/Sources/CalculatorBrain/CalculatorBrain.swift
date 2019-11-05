@@ -34,11 +34,11 @@ struct CalculatorBrain {
     
     // private extensible dictionary of operations with closures
     private var operations: Dictionary<String,Operation> = [
-//        "π" : Operation.constant(Double.pi),
-//        "e" : Operation.constant(M_E),
+        "π" : Operation.constant(Double.pi),
+        "e" : Operation.constant(M_E),
         "AC": Operation.clear,
         "√" : Operation.unary(sqrt),
-//        "cos" : Operation.unary(cos),
+        "cos" : Operation.unary(cos),
         "±" : Operation.unary({ -$0 }),
         "×" : Operation.binary({ $0 * $1 }),
         "÷" : Operation.binary({ $0 / $1 }),

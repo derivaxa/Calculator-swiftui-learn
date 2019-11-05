@@ -118,6 +118,30 @@ class CalculatorBrainTests: XCTestCase {
         }
     }
     
+    func testSuccessACOperation() {
+        brain.setOperand(Double(1.0))
+        do {
+            try brain.performOperation("AC")
+            if let res = brain.result {
+                XCTAssertEqual(res, Double(0))
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func testFailACOperation() {
+        brain.setOperand(Double(1.0))
+        do {
+            try brain.performOperation("AC")
+            if let res = brain.result {
+                XCTAssertNotEqual(res, Double(1.0))
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     func testSuccessWrongOperation() {
         XCTAssertThrowsError(try brain.performOperation("sin")) { (error) in
             XCTAssertTrue(error is CalculatorBrain.CalculatorBrainError)

@@ -22,7 +22,7 @@ struct CalculatorBrainView: View {
     @State private var userIsInTheMiddleOfTyping = false
     
     // Buttons
-    let topSymbols = ["AC", "\u{207A}\u{2215}\u{208B}","√"]
+    let topSymbols = ["AC", "\u{207A}\u{2215}\u{208B}å","√"]
     let sideSymbols = ["×", "÷", "+","−","="]
     let numbers = [["7","8","9"],["4","5","6"],["1","2","3"]]
     
