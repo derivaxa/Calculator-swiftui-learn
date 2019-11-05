@@ -34,7 +34,7 @@ struct CalculatorBrain {
     var operations: Dictionary<String,Operation> = [
 //        "π" : Operation.constant(Double.pi),
 //        "e" : Operation.constant(M_E),
-//        "√" : Operation.unary(sqrt),
+        "√" : Operation.unary(sqrt),
 //        "cos" : Operation.unary(cos),
         "±" : Operation.unary({ -$0 }),
         "×" : Operation.binary({ $0 * $1 }),

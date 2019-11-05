@@ -8,12 +8,18 @@
 
 import SwiftUI
 
+
+
 struct CalculatorBrainView: View {
+    
     @ObservedObject var viewModel = CalculatorBrainViewModel()
     
     @State private var display = "0"
     @State private var userStillTyping = false
-
+    
+    let topSymbols = ["AC", "\u{207A}\u{2215}\u{208B}","√"]
+    let sideSymbols = ["×", "÷", "+","−","="]
+    
     var body: some View {
         VStack {
             Text("ButterflyCalculator")
@@ -39,23 +45,21 @@ struct CalculatorBrainView_Previews: PreviewProvider {
     }
 }
 private extension CalculatorBrainView {
-
+    
     var keyboard: some View {
-        let keys = viewModel.brain.operations.map {$0.key}
-
         return HStack {
-            ForEach(keys, id:\.self) { item in
+            ForEach(topSymbols, id:\.self) { item in
                 HStack {
                     Group {
                         Button(action: {
                             print("Tapped: \(item)")
-//                            self.tapped(operation: item)
+                            //                            self.tapped(operation: item)
                         }) {
                             Text(item)
                         }.padding(20)
-                        .accentColor(.white)
-                        .background(Color.orange)
-                        .mask(Circle())
+                            .accentColor(.white)
+                            .background(Color.orange)
+                            .mask(Circle()).frame(minWidth: 0, maxWidth: .infinity)
                     }
                 }
             }

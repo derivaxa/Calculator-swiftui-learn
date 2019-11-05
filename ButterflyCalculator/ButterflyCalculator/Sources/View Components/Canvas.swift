@@ -31,6 +31,8 @@ struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Canvas()
+                .previewDevice("iPhone 7")
+            Canvas()
                 .previewDevice("iPhone SE")
             Canvas()
                 .previewDevice("iPhone XR")
