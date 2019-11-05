@@ -16,7 +16,7 @@ struct Canvas: View {
     
     var body: some View {
         VStack {
-            CalculatorBrainView().padding(20.0)
+            CalculatorBrainView().padding(20.0).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
             Spacer()
             HStack() {
                 Spacer()

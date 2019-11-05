@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The main operator view to calculate our results
 struct CalculatorBrain {
     
     /// Stores current result of total calculation
