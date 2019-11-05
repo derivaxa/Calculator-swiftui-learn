@@ -24,28 +24,21 @@ struct CalculatorBrainView: View {
     let numbers = [["7","8","9"],["4","5","6"],["1","2","3"]]
     
     var body: some View {
-        return VStack {
-            displayValue
-            HStack(spacing: 0.0) {
-                VStack (spacing: 0.0) {
-                    calculatorPad.layoutPriority(1.0)
+        return GeometryReader { geom in
+            VStack {
+                self.displayValue
+                HStack(spacing: 0.0) {
+                    VStack (spacing: 0.0) {
+                        calculatorPad.layoutPriority(1.0)
+                    }
+                    self.displaySidePad
                 }
-                displaySidePad
             }
         }
     }
 }
 
-#if DEBUG
-struct CalculatorBrainView_Previews: PreviewProvider {
-    static var previews: some View {
-//        ForEach(ContentSizeCategory.allCases, id: \.self) { item in
-        CalculatorBrainView()
-            .previewLayout(.sizeThatFits)
-//                .environment(\.sizeCategory, item)
-//        }
-    }
-}
+
 // MARK:- Actions
 private extension CalculatorBrainView {
     private func touchUpInside(_ symbol: String) {
@@ -172,6 +165,17 @@ private extension CalculatorBrainView {
                 }
             }
         }
+    }
+}
+
+#if DEBUG
+struct CalculatorBrainView_Previews: PreviewProvider {
+    static var previews: some View {
+//        ForEach(ContentSizeCategory.allCases, id: \.self) { item in
+        CalculatorBrainView()
+            .previewLayout(.sizeThatFits)
+//                .environment(\.sizeCategory, item)
+//        }
     }
 }
 #endif
