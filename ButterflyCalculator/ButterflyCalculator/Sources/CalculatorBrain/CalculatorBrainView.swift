@@ -33,7 +33,6 @@ struct CalculatorBrainView: View {
                 displaySidePad
             }
         }
-        
     }
 }
 
@@ -100,6 +99,10 @@ private extension CalculatorBrainView {
             }
     }
     
+    func generateButton(item: String) {
+        
+    }
+    
     var calculatorPad: some View {
         return VStack (spacing: 10.0){
             topSymbolsPad
@@ -114,10 +117,7 @@ private extension CalculatorBrainView {
                     self.touchUpInside(item)
                 }) {
                     Text(item)
-                }.padding(20)
-                    .accentColor(.white)
-                    .background(Color.orange)
-                    .mask(Circle())
+                }.buttonStyle(PurpleButtons())
             }
         }
     }
@@ -130,10 +130,7 @@ private extension CalculatorBrainView {
                     self.touchUpInside(item)
                 }) {
                     Text(item).frame(minWidth: 0, maxWidth: .infinity)
-                }.padding(20)
-                    .accentColor(.white)
-                    .background(Color.pink)
-                    .mask(Circle())
+                }.buttonStyle(PinkButtons())
             }
         }
     }
@@ -151,10 +148,7 @@ private extension CalculatorBrainView {
                                 }) {
                                     Text(button)
                                         .frame(minWidth: 0, maxWidth: .infinity)
-                                }.padding(20)
-                                    .accentColor(.white)
-                                    .background(Color.gray)
-                                    .mask(Circle())
+                                }.buttonStyle(GrayButtons())
                             }
                         }
                     }
@@ -170,17 +164,12 @@ private extension CalculatorBrainView {
                             .accentColor(.white)
                             .background(Color.gray)
                             .cornerRadius(50.0)
-                            .layoutPriority(2.0)
                         Button(action: {
                             self.touchUpInside(".")
                         }) {
                             Text(".")
                                 .frame(minWidth: 0, maxWidth: .infinity)
-                        }.padding(20)
-                            .accentColor(.white)
-                            .background(Color.gray)
-                            .mask(Circle())
-                            .layoutPriority(2.0)
+                        }.buttonStyle(GrayButtons())
                     }
                 }
             }
