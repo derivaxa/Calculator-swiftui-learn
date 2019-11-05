@@ -5,6 +5,7 @@
 //  Created by Angela Mao on 5/11/19.
 //  Copyright © 2019 Angela Mao. All rights reserved.
 //
+// Reference: https://github.com/hotchner/SwiftUICalculator/blob/master/Calculator/Calculator/Calculator.swift
 
 import SwiftUI
 
@@ -12,12 +13,13 @@ import SwiftUI
 /// The main calculator view with display value and keyboard
 struct CalculatorBrainView: View {
     
-    // Keeps track of our viewModel
-    @ObservedObject var viewModel = CalculatorBrainViewModel()
+    //    // Keeps track of our viewModel
+    //    @ObservedObject var viewModel = CalculatorBrainViewModel()
+    @State private var brain = CalculatorBrain()
     
     // State lets all references know that this variable has been updated
     @State private var display = "0"
-    @State private var userStillTyping = false
+    @State private var userIsInTheMiddleOfTyping = false
     
     // Buttons
     let topSymbols = ["AC", "\u{207A}\u{2215}\u{208B}","√"]
@@ -34,7 +36,7 @@ struct CalculatorBrainView: View {
                 displaySidePad
             }
         }
-
+        
     }
 }
 
@@ -48,15 +50,56 @@ struct CalculatorBrainView_Previews: PreviewProvider {
         //        }
     }
 }
+// MARK:- Actions
+private extension CalculatorBrainView {
+    private func touchUpInside(_ symbol: String) {
+        if Int(symbol) != nil || symbol == "." {
+            touchDigit(symbol)
+        } else {
+            performOperation(symbol)
+        }
+    }
+    
+    private func touchDigit(_ digit: String) {
+        if userIsInTheMiddleOfTyping {
+            display += digit
+        } else {
+            display = digit
+            userIsInTheMiddleOfTyping = true
+        }
+    }
+    
+    private func performOperation(_ symbol: String) {
+        if userIsInTheMiddleOfTyping {
+            do {
+                brain.setOperand(Double(display)!)
+                userIsInTheMiddleOfTyping.toggle()
+                try brain.performOperation(symbol)
+            } catch let error {
+                print(error)
+            }
+            
+            
+            if let result = brain.result {
+                display = String(result)
+            }
+        }
+    }
+}
+
+// MARK:- Subviews
+// FIXME: Better spacing, styling and reusability using Styles.swift & GeometryReader (similar to Cartography)
 private extension CalculatorBrainView {
     
     var displayValue: some View {
-        return Text("ButterflyCalculator")
-            .foregroundColor(Color.gray)
-        HStack {
-            Spacer()
-            Text(display)
-                .foregroundColor(Color.white)
+        return VStack {
+            Text("ButterflyCalculator")
+                .foregroundColor(Color.gray)
+            HStack {
+                Spacer()
+                Text(display)
+                    .foregroundColor(Color.white)
+            }
         }
     }
     
@@ -71,7 +114,7 @@ private extension CalculatorBrainView {
         return VStack {
             ForEach(sideSymbols, id:\.self) { item in
                 Button(action: {
-                    print("Tapped: \(item)")
+                    self.touchUpInside(item)
                 }) {
                     Text(item).frame(minWidth: 0, maxWidth: .infinity)
                 }.padding(20)
@@ -87,7 +130,7 @@ private extension CalculatorBrainView {
         return HStack {
             ForEach(topSymbols, id:\.self) { item in
                 Button(action: {
-                    print("Tapped: \(item)")
+                    self.touchUpInside(item)
                 }) {
                     Text(item).frame(minWidth: 0, maxWidth: .infinity)
                 }.padding(20)
@@ -107,7 +150,7 @@ private extension CalculatorBrainView {
                         HStack {
                             ForEach(row, id: \.self) { button in
                                 Button(action: {
-                                    print("Tapped: \(button)")
+                                    self.touchUpInside(button)
                                 }) {
                                     Text(button)
                                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -122,7 +165,7 @@ private extension CalculatorBrainView {
                 Group {
                     HStack(alignment: .center) {
                         Button(action: {
-                            print("Tapped: 0")
+                            self.touchUpInside("0")
                         }) {
                             Text("0")
                                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -132,7 +175,7 @@ private extension CalculatorBrainView {
                             .cornerRadius(50.0)
                             .layoutPriority(2.0)
                         Button(action: {
-                            print("Tapped: .")
+                            self.touchUpInside(".")
                         }) {
                             Text(".")
                                 .frame(minWidth: 0, maxWidth: .infinity)

@@ -11,5 +11,5 @@ import Foundation
 
 class CalculatorBrainViewModel: ObservableObject, Identifiable {
 
-    let brain = CalculatorBrain()
+//    var brain = CalculatorBrain()
 }
