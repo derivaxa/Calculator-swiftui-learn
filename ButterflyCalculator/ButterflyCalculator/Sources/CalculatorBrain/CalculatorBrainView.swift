@@ -26,14 +26,17 @@ struct CalculatorBrainView: View {
     var body: some View {
         return GeometryReader { geom in
             VStack {
-                self.displayValue
-                HStack(spacing: 0.0) {
+                self.displayValue.frame(height: 50.0)
+                Spacer()
+                HStack {
                     VStack (spacing: 0.0) {
                         self.calculatorPad.layoutPriority(1.0)
                     }
+                    Spacer().frame(width: 10.0)
                     self.displaySidePad
+                    Spacer().frame(width: 10.0)
                 }
-                Spacer()
+                Spacer().frame(height: 20.0)
             }
         }
     }
@@ -148,15 +151,12 @@ private extension CalculatorBrainView {
                 }
                 Group {
                     HStack(alignment: .center) {
-                        Button(action: {
+                        
+                        CustomButton(action: {
                             self.touchUpInside("0")
-                        }) {
+                        }, content: {
                             Text("0")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }.padding(20)
-                            .accentColor(.white)
-                            .background(Color.gray)
-                            .cornerRadius(50.0)
+                        }, color: Color.gray)
                         CustomButton(action: {
                             self.touchUpInside(".")
                         }, content: {

@@ -26,7 +26,7 @@ struct CustomButton<T: View>: View {
             content.padding(20.0)
             .foregroundColor(.white)
             .background(color)
-            .mask(Circle())
+                .cornerRadius(25.0)
         }
     }
 }

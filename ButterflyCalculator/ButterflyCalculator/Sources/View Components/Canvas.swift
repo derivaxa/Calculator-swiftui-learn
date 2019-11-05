@@ -16,11 +16,10 @@ struct Canvas: View {
     
     var body: some View {
         VStack {
-            CalculatorBrainView().padding(20.0).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+            CalculatorBrainView().padding(20.0)
             Spacer()
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
-        .frame(width: UIScreen.main.bounds.width)
     }
 }
 
