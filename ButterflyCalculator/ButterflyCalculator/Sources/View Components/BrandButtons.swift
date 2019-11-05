@@ -13,51 +13,20 @@ import SwiftUI
 struct CustomButton<T: View>: View {
     let action: () -> Void
     let content: T
+    let color: Color
 
-    init(action: @escaping() -> Void, @ViewBuilder content: () -> T) {
+    init(action: @escaping() -> Void, @ViewBuilder content: () -> T, color: Color) {
         self.action = action
         self.content = content()
+        self.color = color
     }
     
     var body: some View {
         Button(action: action) {
             content.padding(20.0)
             .foregroundColor(.white)
-            .background(Color.purple)
+            .background(color)
             .mask(Circle())
         }
-    }
-}
-
-struct PurpleButtons: ButtonStyle {
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding(20.0)
-            .foregroundColor(.white)
-            .background(Color.purple)
-            .mask(Circle())
-    }
-}
-
-struct PinkButtons: ButtonStyle {
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding(20.0)
-            .foregroundColor(.white)
-            .background(Color.pink)
-            .mask(Circle())
-    }
-}
-
-struct GrayButtons: ButtonStyle {
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding(20.0)
-            .foregroundColor(.white)
-            .background(Color.gray)
-            .mask(Circle())
     }
 }

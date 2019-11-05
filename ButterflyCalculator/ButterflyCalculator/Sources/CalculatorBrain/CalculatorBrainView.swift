@@ -115,9 +115,9 @@ private extension CalculatorBrainView {
             ForEach(sideSymbols, id:\.self) { item in
                 CustomButton(action: {
                     self.touchUpInside(item)
-                }) {
+                }, content: {
                     Text(item)
-                }
+                }, color: .purple)
             }
         }
     }
@@ -126,11 +126,11 @@ private extension CalculatorBrainView {
     var topSymbolsPad: some View {
         return HStack {
             ForEach(topSymbols, id:\.self) { item in
-                Button(action: {
+                CustomButton(action: {
                     self.touchUpInside(item)
-                }) {
+                }, content: {
                     Text(item).frame(minWidth: 0, maxWidth: .infinity)
-                }.buttonStyle(PinkButtons())
+                }, color: .pink)
             }
         }
     }
@@ -143,12 +143,11 @@ private extension CalculatorBrainView {
                     ForEach(numbers, id:\.self) { row in
                         HStack {
                             ForEach(row, id: \.self) { button in
-                                Button(action: {
+                                CustomButton(action: {
                                     self.touchUpInside(button)
-                                }) {
-                                    Text(button)
-                                        .frame(minWidth: 0, maxWidth: .infinity)
-                                }.buttonStyle(GrayButtons())
+                                }, content: {
+                                    Text(button).frame(minWidth: 0, maxWidth: .infinity)
+                                }, color: .gray)
                             }
                         }
                     }
@@ -164,12 +163,11 @@ private extension CalculatorBrainView {
                             .accentColor(.white)
                             .background(Color.gray)
                             .cornerRadius(50.0)
-                        Button(action: {
+                        CustomButton(action: {
                             self.touchUpInside(".")
-                        }) {
-                            Text(".")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }.buttonStyle(GrayButtons())
+                        }, content: {
+                            Text(".").frame(minWidth: 0, maxWidth: .infinity)
+                        }, color: .gray)
                     }
                 }
             }
