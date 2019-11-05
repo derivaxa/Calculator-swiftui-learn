@@ -13,13 +13,7 @@ import Combine
 class CalculatorViewModel: ObservableObject, Identifiable {
     
     @Published var displayValue = "0"
-    /// dataSource is often the model for MVVM - this model is not needed as we have no objects to instantiate
     
     var keypad =  [["7","8","9"],["4","5","6"],["1","2","3"]]
     var operations = ["+","-","*","/","="]
-    
-    // TODO: Create a type checking function to ensure we are printing out the right type (e.g. 3/2 = 1.5)
-    
-    /// - Parameter: integer to increment
-    /// - Return: display + number
 }
