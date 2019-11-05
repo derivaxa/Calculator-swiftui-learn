@@ -13,8 +13,8 @@ import SwiftUI
 /// The main calculator view with display value and keyboard
 struct CalculatorBrainView: View {
     
-    //    // Keeps track of our viewModel
-    //    @ObservedObject var viewModel = CalculatorBrainViewModel()
+    // Keeps track of our viewModel
+//    @ObservedObject var viewModel = CalculatorBrainViewModel()
     @State private var brain = CalculatorBrain()
     
     // State lets all references know that this variable has been updated
@@ -27,11 +27,11 @@ struct CalculatorBrainView: View {
     let numbers = [["7","8","9"],["4","5","6"],["1","2","3"]]
     
     var body: some View {
-        VStack {
+        return VStack {
             displayValue
-            HStack {
-                VStack {
-                    calculatorPad
+            HStack(spacing: 0.0) {
+                VStack (spacing: 0.0) {
+                    calculatorPad.layoutPriority(1.0)
                 }
                 displaySidePad
             }
@@ -43,11 +43,11 @@ struct CalculatorBrainView: View {
 #if DEBUG
 struct CalculatorBrainView_Previews: PreviewProvider {
     static var previews: some View {
-        //        ForEach(ContentSizeCategory.allCases, id: \.self) { item in
+//        ForEach(ContentSizeCategory.allCases, id: \.self) { item in
         CalculatorBrainView()
             .previewLayout(.sizeThatFits)
-        //                .environment(\.sizeCategory, item)
-        //        }
+//                .environment(\.sizeCategory, item)
+//        }
     }
 }
 // MARK:- Actions
@@ -55,6 +55,9 @@ private extension CalculatorBrainView {
     private func touchUpInside(_ symbol: String) {
         if Int(symbol) != nil || symbol == "." {
             touchDigit(symbol)
+        } else if symbol == "AC" {
+            display = "0"
+            performOperation(symbol)
         } else {
             performOperation(symbol)
         }
@@ -92,31 +95,28 @@ private extension CalculatorBrainView {
 private extension CalculatorBrainView {
     
     var displayValue: some View {
-        return VStack {
-            Text("ButterflyCalculator")
-                .foregroundColor(Color.gray)
+        return
             HStack {
                 Spacer()
                 Text(display)
                     .foregroundColor(Color.white)
             }
-        }
     }
     
     var calculatorPad: some View {
-        return VStack {
+        return VStack (spacing: 10.0){
             topSymbolsPad
             numberPad
         }
     }
     
     var displaySidePad: some View {
-        return VStack {
+        return VStack(spacing: 10.0) {
             ForEach(sideSymbols, id:\.self) { item in
                 Button(action: {
                     self.touchUpInside(item)
                 }) {
-                    Text(item).frame(minWidth: 0, maxWidth: .infinity)
+                    Text(item)
                 }.padding(20)
                     .accentColor(.white)
                     .background(Color.orange)
@@ -144,7 +144,7 @@ private extension CalculatorBrainView {
     /// 1-9 numbers
     var numberPad: some View {
         return HStack {
-            VStack {
+            VStack(spacing: 10.0) {
                 Group {
                     ForEach(numbers, id:\.self) { row in
                         HStack {

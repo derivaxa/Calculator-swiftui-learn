@@ -71,7 +71,7 @@ struct CalculatorBrain {
         case .equals:
             performPendingBinaryOperation()
         case .clear:
-            accumulator = 0.0
+            setOperand(0.0)
         }
     }
     
