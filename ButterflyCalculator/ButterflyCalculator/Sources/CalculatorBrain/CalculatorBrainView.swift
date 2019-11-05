@@ -28,9 +28,14 @@ struct CalculatorBrainView: View {
     }
 }
 
+#if DEBUG
 struct CalculatorBrainView_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorBrainView().previewLayout(.sizeThatFits)
+        ForEach(ContentSizeCategory.allCases, id: \.self) { item in
+            CalculatorBrainView()
+                .previewLayout(.sizeThatFits)
+                .environment(\.sizeCategory, item)
+        }
 
     }
 }
@@ -41,3 +46,4 @@ private extension CalculatorBrainView {
         }
     }
 }
+#endif
