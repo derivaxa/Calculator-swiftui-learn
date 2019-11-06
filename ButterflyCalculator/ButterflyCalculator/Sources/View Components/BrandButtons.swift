@@ -23,7 +23,7 @@ struct CustomButton<T: View>: View {
     
     var body: some View {
         Button(action: action) {
-            content.padding(20.0)
+            content.padding(15.0)
             .foregroundColor(.white)
             .background(color)
                 .cornerRadius(25.0)
