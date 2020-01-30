@@ -1,7 +1,4 @@
-# ButterflyCalculator
-Interview Project for Butterfly Systems - build a simple calculator with arithmetic and clean UI for landscape and portrait.
-
-Project Details:
+# Project Details:
 * Swift 5.1
 * SwiftUI
 * Testing frameworks
